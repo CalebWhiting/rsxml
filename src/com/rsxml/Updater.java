@@ -34,22 +34,15 @@ public class Updater {
 
 	private static void update() throws Exception {
 		File local = new File(Configuration.getHome(), "client.jar");
-		File inject = new File(Configuration.getHome(), "inject.jar");
 		JarUtility.update(local, new URL(Application.EXTERNAL_PACK));
 		Map<String, ClassNode> library = new HashMap<>();
-		try (JarOutputStream out = new JarOutputStream(new FileOutputStream(inject))) {
-			try (JarInputStream j = new JarInputStream(new FileInputStream(local))) {
-				for (JarEntry e; (e = j.getNextJarEntry()) != null; ) {
-					if (e.getName().endsWith(".class")) {
-						ClassNode cn = new ClassNode();
-						ClassReader reader = new ClassReader(j);
-						reader.accept(cn, ClassReader.SKIP_DEBUG);
-						library.put(cn.name, cn);
-					} else {
-						byte[] bytes = NetUtility.readFully(j);
-						out.putNextEntry(new JarEntry(e.getName()));
-						out.write(bytes);
-					}
+		try (JarInputStream j = new JarInputStream(new FileInputStream(local))) {
+			for (JarEntry e; (e = j.getNextJarEntry()) != null; ) {
+				if (e.getName().endsWith(".class")) {
+					ClassNode cn = new ClassNode();
+					ClassReader reader = new ClassReader(j);
+					reader.accept(cn, ClassReader.SKIP_DEBUG);
+					library.put(cn.name, cn);
 				}
 			}
 		}

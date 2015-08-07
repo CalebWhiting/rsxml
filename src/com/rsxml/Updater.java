@@ -1,8 +1,10 @@
 package com.rsxml;
 
-import com.decimate.*;
-import com.decimate.util.*;
+import com.rspsbot.*;
+import com.rspsbot.util.*;
+
 import com.rsxml.xml.*;
+
 import jdk.internal.org.objectweb.asm.*;
 import jdk.internal.org.objectweb.asm.tree.*;
 

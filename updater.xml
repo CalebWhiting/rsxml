@@ -1,0 +1,63 @@
+<processors>
+    <class key="Shell">
+        <superclass>java.applet.Applet</superclass>
+    </class>
+    <class key="Client">
+        <superclass>@Shell@</superclass>
+    </class>
+    <class key="Node">
+        <superclass>java.lang.Object</superclass>
+        <field-count mode="equals" amount="1" desc="J"/>
+        <field-count mode="equals" amount="2" desc="L@Node@;"/>
+    </class>
+    <class key="NodeSub">
+        <superclass>@Node@</superclass>
+        <field-count mode="equals" amount="2" desc=""/>
+        <field-count mode="equals" amount="2" desc="L@NodeSub@;"/>
+    </class>
+    <class key="Animable">
+        <superclass>@NodeSub@</superclass>
+        <field-count mode="equals" amount="2" desc=""/>
+        <field-count mode="equals" amount="1" desc="I"/>
+    </class>
+    <class key="GroundItem">
+        <superclass>@Animable@</superclass>
+        <field-count mode="equals" amount="2" desc=""/>
+        <field-count mode="equals" amount="2" desc="I"/>
+    </class>
+    <class key="Actor">
+        <superclass>@Animable@</superclass>
+        <field-count mode="equals" amount="1" desc="Ljava/lang/String;"/>
+        <field-count mode="more" amount="15" desc=""/>
+    </class>
+    <class key="Npc">
+        <superclass>@Actor@</superclass>
+        <field-count mode="equals" amount="1" desc=""/>
+    </class>
+    <class key="Player">
+        <superclass>@Actor@</superclass>
+        <field-count mode="more" amount="1" desc=""/>
+    </class>
+    <class key="NpcDefinition">
+        <superclass>java.lang.Object</superclass>
+        <field-count mode="equals" amount="1" desc="Ljava/lang/String;"/>
+        <field-count mode="equals" amount="1" desc="[Ljava/lang/String;"/>
+        <field-count owner="@Npc@" mode="equals" amount="1" desc="L@NpcDefinition@;"/>
+    </class>
+    <class key="CollisionMap">
+        <superclass>java.lang.Object</superclass>
+        <field-count mode="equals" amount="1" desc="[[I"/>
+        <field-count mode="equals" amount="4" desc="I"/>
+    </class>
+    <class key="ItemDefinition">
+        <superclass>java.lang.Object</superclass>
+        <field-count mode="equals" amount="2" desc="Ljava/lang/String;"/>
+        <field-count mode="equals" amount="2" desc="[Ljava/lang/String;"/>
+    </class>
+    <class key="RegionTile">
+        <method-count mode="equals" amount="1" desc="(III)V" name="$init"/>
+    </class>
+    <class key="Region">
+        <field-count mode="equals" amount="1" desc="[[[L@RegionTile@;"/>
+    </class>
+</processors>
